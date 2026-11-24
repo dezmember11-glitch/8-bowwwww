@@ -1,0 +1,251 @@
+ЗАДАНИЕ №1 — ВАРИАНТ 26
+Условие: Вычисление количества элементов, значения которых ниже среднего значения массива.
+
+#include <stdio.h>
+
+int main(void) {
+    int a[100];
+    int n, i;
+
+    printf("Enter array size (1..100): ");
+    if (scanf("%d", &n) != 1 || n < 1 || n > 100) {
+        printf("Invalid size.\n");
+        return 1;
+    }
+
+    for (i = 0; i < n; i++) {
+        printf("a[%d] = ", i);
+        if (scanf("%d", &a[i]) != 1) {
+            printf("Input error.\n");
+            return 1;
+        }
+    }
+
+    double sum = 0;
+    double average;
+    int count = 0;
+
+    for (i = 0; i < n; i++) {
+        sum = sum + *(a + i);
+    }
+
+    average = sum / n;
+
+    for (i = 0; i < n; i++) {
+        if (*(a + i) < average) {
+            count++;
+        }
+    }
+
+    printf("Average = %.2f\n", average);
+    printf("Count below average = %d\n", count);
+
+    return 0;
+}
+
+
+====================================================================
+ЗАДАНИЕ №2 — ВАРИАНТ 18
+Условие: Разница между минимальным и максимальным значением элементов массива в заданном диапазоне индексов k–m.
+
+#include <stdio.h>
+
+int main(void) {
+    int a[100];
+    int n, i;
+
+    printf("Enter array size (1..100): ");
+    if (scanf("%d", &n) != 1 || n < 1 || n > 100) {
+        printf("Invalid size.\n");
+        return 1;
+    }
+
+    for (i = 0; i < n; i++) {
+        printf("a[%d] = ", i);
+        if (scanf("%d", &a[i]) != 1) {
+            printf("Input error.\n");
+            return 1;
+        }
+    }
+
+    int k, m;
+    int minimum, maximum;
+
+    printf("Enter indices k and m (from 0 to %d): ", n - 1);
+
+    if (scanf("%d%d", &k, &m) != 2 ||
+        k < 0 || m >= n || k > m) {
+        printf("Invalid indices.\n");
+        return 1;
+    }
+
+    minimum = *(a + k);
+    maximum = *(a + k);
+
+    for (i = k; i <= m; i++) {
+        if (*(a + i) < minimum) {
+            minimum = *(a + i);
+        }
+
+        if (*(a + i) > maximum) {
+            maximum = *(a + i);
+        }
+    }
+
+    printf("Minimum = %d\n", minimum);
+    printf("Maximum = %d\n", maximum);
+    printf("Difference = %d\n", maximum - minimum);
+
+    return 0;
+}
+
+
+====================================================================
+ЗАДАНИЕ №3 — ВАРИАНТ 24
+Условие: Определение индексов элементов массива по значению выше введённого k.
+
+#include <stdio.h>
+
+int main(void) {
+    int a[100];
+    int n, i;
+
+    printf("Enter array size (1..100): ");
+    if (scanf("%d", &n) != 1 || n < 1 || n > 100) {
+        printf("Invalid size.\n");
+        return 1;
+    }
+
+    for (i = 0; i < n; i++) {
+        printf("a[%d] = ", i);
+        if (scanf("%d", &a[i]) != 1) {
+            printf("Input error.\n");
+            return 1;
+        }
+    }
+
+    int k;
+    int found = 0;
+
+    printf("Enter k: ");
+    if (scanf("%d", &k) != 1) {
+        printf("Input error.\n");
+        return 1;
+    }
+
+    printf("Indices of elements above k: ");
+
+    for (i = 0; i < n; i++) {
+        if (*(a + i) > k) {
+            printf("%d ", i);
+            found = 1;
+        }
+    }
+
+    if (found == 0) {
+        printf("none");
+    }
+
+    printf("\n");
+
+    return 0;
+}
+
+
+====================================================================
+ЗАДАНИЕ №4 — ВАРИАНТ 30
+Условие: Вычисление суммы элементов массива, значения которых выше среднего значения массива.
+
+#include <stdio.h>
+
+int main(void) {
+    int a[100];
+    int n, i;
+
+    printf("Enter array size (1..100): ");
+    if (scanf("%d", &n) != 1 || n < 1 || n > 100) {
+        printf("Invalid size.\n");
+        return 1;
+    }
+
+    for (i = 0; i < n; i++) {
+        printf("a[%d] = ", i);
+        if (scanf("%d", &a[i]) != 1) {
+            printf("Input error.\n");
+            return 1;
+        }
+    }
+
+    double sum = 0;
+    double average;
+    int result = 0;
+
+    for (i = 0; i < n; i++) {
+        sum = sum + *(a + i);
+    }
+
+    average = sum / n;
+
+    for (i = 0; i < n; i++) {
+        if (*(a + i) > average) {
+            result = result + *(a + i);
+        }
+    }
+
+    printf("Average = %.2f\n", average);
+    printf("Sum above average = %d\n", result);
+
+    return 0;
+}
+
+
+====================================================================
+ЗАДАНИЕ №5 — ВАРИАНТ 4
+Условие: Определение индексов элементов, значения которых выше заданного k.
+
+#include <stdio.h>
+
+int main(void) {
+    int a[100];
+    int n, i;
+
+    printf("Enter array size (1..100): ");
+    if (scanf("%d", &n) != 1 || n < 1 || n > 100) {
+        printf("Invalid size.\n");
+        return 1;
+    }
+
+    for (i = 0; i < n; i++) {
+        printf("a[%d] = ", i);
+        if (scanf("%d", &a[i]) != 1) {
+            printf("Input error.\n");
+            return 1;
+        }
+    }
+
+    int k;
+    int found = 0;
+
+    printf("Enter k: ");
+    if (scanf("%d", &k) != 1) {
+        printf("Input error.\n");
+        return 1;
+    }
+
+    printf("Indices of elements above k: ");
+
+    for (i = 0; i < n; i++) {
+        if (*(a + i) > k) {
+            printf("%d ", i);
+            found = 1;
+        }
+    }
+
+    if (found == 0) {
+        printf("none");
+    }
+
+    printf("\n");
+
+    return 0;
+}
